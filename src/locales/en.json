@@ -1,0 +1,33 @@
+{
+  "header": {
+    "title": "Russian",
+    "tit": "Category",
+    "tit0": "All",
+    "tit1": "Electronics",
+    "tit2": "Fashion",
+    "tit3": "Books",
+    "tit4": "Home",
+    "tit5": "Search",
+    "tit6": "Search...",
+     "kit": "Favorites",
+    "lit": "Comparison",
+    "lit0": "pay",
+    "lit1": "Cart",
+    "lit2": "Login",
+    "lit3": "Modal content",
+    "lit4": "Close",
+    "lit5": "Cart is empty",
+    "lit6": "Total",
+    "lit7": "Checkout",
+    "lit8": " Close"
+  },
+  "footer": {
+    "text": "All rights reserved.",
+    "text1": "No need to go to the market anymore",
+    "text2": "Installment payment",
+    "text3": "Delivery and stores",
+    "text4": "Payment methods"
+  }
+}
+
+  

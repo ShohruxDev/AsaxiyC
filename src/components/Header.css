@@ -1,0 +1,46 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 50px;
+}
+.header nav{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.header nav .active {
+    color: darkgreen;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.logo input{
+    padding: 10px 50px;
+    border-radius: 15px;
+    border: none;
+    border: 2px solid blue;
+}
+.product-swiper {
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+.slide-card {
+  text-align: center;
+  background: white;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slide-card img {
+  max-width: 100%;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 8px;
+}

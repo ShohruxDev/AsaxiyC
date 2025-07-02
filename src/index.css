@@ -1,0 +1,49 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+.product-detail{
+  padding: 100px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.productrli{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+  margin: 100px auto;
+}
+form input{
+  padding: 4px 10px;
+  background-color: aliceblue;
+  border: none;
+  border-radius: 8px;
+  border: 1px solid darkcyan;
+}
+form button{
+  padding: 11px 8px;
+  background-color: rgb(53, 118, 174);
+  border: none;
+  border-radius: 8px;
+  border: 1px solid darkcyan;
+  cursor: pointer;
+}
+form button:hover{
+   background-color: rgb(35, 101, 160); 
+}
+.card{
+     display: flex;
+     flex-direction: column;
+     border-radius: 8px;
+     align-items: center;
+     box-shadow: 0 4px 10px rgb(207, 197, 197);
+}

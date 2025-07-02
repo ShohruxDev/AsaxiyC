@@ -1,0 +1,88 @@
+let productQuantities = {};
+
+function cartModalAnim(image, productId, cartId) {
+    let quantity = productQuantities[productId] || 0;
+    quantity++;
+    productQuantities[productId] = quantity;
+    $('#product-cart-model-img').attr('src', image);
+    $('#product-cart-model-name').text($('.product-name-id-' + productId + ':last').text());
+    $('#product-cart-model-price').text($('.product-main-price-id-' + productId + ':last').text());
+    $('#cart_anim-modal').removeClass('d-none');
+    let existingItem = $('.cart__product-list').find('.cart__product-item[id="product-id-' + productId + '"]');
+    if (existingItem.length > 0) {
+        setTimeout(function () {
+            $('#cart_anim-modal').addClass('d-none');
+        }, 2500);
+        $("#product-id-" + productId).removeClass('d-none')
+        return;
+    }
+    let newProductItem = $('<li class="cart__product-item" id=product-id-' + productId + '></li>');
+    newProductItem.append(`
+    <div class="cart__product-item--img">
+        <p class="quantity_item d-none"></p>
+        <img class="img img_cart-product" src="" alt="">
+    </div>
+    <div class="cart__product-item--info">
+        <a href="#"></a>
+        <div class="cart__product-item--price">
+            <span class="cart__product-price--new"></span>
+        </div>  
+    </div>
+    <div class="remove__product-wrapper">
+        <noindex>
+            <a onclick="removeFromCart('` + cartId + `' ,` + true + `);" class="remove__product-list" rel="nofollow">
+                <img src="/custom-assets/images/icons/delete-cart.svg">
+            </a>
+        </noindex>
+    </div>
+  `);
+
+    $('.img_cart-product', newProductItem).attr('src', image);
+    $('.cart__product-item--info a', newProductItem).text($('.product-name-id-' + productId + ':last').text());
+    $('.cart__product-price--new', newProductItem).text($('.product-main-price-id-' + productId + ':last').text());
+    $('.cart__product-list').append(newProductItem);
+    setTimeout(function () {
+        $('#cart_anim-modal').addClass('d-none');
+    }, 2500);
+    $('.remove__product-list', newProductItem).click(function () {
+        $(this).closest('.cart__product-item').remove();
+    });
+    $('.remove__product-list', newProductItem).click(function () {
+        const productItem = $(this).closest('.cart__product-item');
+        let price = $('.product-main-price-id-' + productId + ':last').text()
+        let numberFormatPrice = parseInt(price.replace(/\s/g, ''), 10);
+        totalPrice -= numberFormatPrice * productQuantities[productId];
+        totalPriceCart.textContent = new Intl.NumberFormat('en-US').format(totalPrice).replace(/,/g, ' ') + ('app', ' сум');
+        productItem.remove();
+        productQuantities[productId] = 0
+    });
+}
+
+// Cart Total calculating function =========>
+document.querySelectorAll('.remove__product-list').forEach((button) => {
+    button.addEventListener('click', () => {
+        const productItem = button.closest('.cart__product-item');
+
+        const quantityItem = productItem.querySelector('.quantity_item');
+        const quantity = parseInt(quantityItem.textContent.trim());
+
+        const priceCartElement = productItem.querySelector('.cart__product-price--new');
+        const price = parseInt(priceCartElement.textContent.replace(/\D/g, ''));
+
+        totalPrice -= price * quantity;
+        if (totalPrice < 0) totalPrice = 0;
+        totalPriceCart.textContent = new Intl.NumberFormat('en-US').format(totalPrice).replace(/,/g, ' ') + ' сум';
+
+        productItem.remove();
+    });
+});
+
+const totalPriceCart = document.querySelector('.total-count');
+let totalPrice = parseInt(totalPriceCart.textContent.replace(/\D/g, ''));
+
+function addCartTotal(productId) {
+    const priceProduct = $('.product-main-price-id-' + productId + ':last').text();
+    const price = parseInt(priceProduct.replace(/\D/g, ''));
+    totalPrice += price;
+    totalPriceCart.textContent = new Intl.NumberFormat('en-US').format(totalPrice).replace(/,/g, ' ') + ' сум';
+}
