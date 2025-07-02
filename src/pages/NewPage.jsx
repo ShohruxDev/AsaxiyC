@@ -3,7 +3,7 @@ import API from "../API/api";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Pagination } from "antd";
-
+import "./NewPage.css"
 const NewPage = () => {
   const navigate = useNavigate();
   const [currentpage, setcurrentpage] = useState(0);
@@ -18,7 +18,9 @@ const NewPage = () => {
   });
   async function getdata() {
     try {
-      const res = await API.get(`/products?limit=${pagesize}&skip=${currentpage * pagesize}`);
+      const res = await API.get(
+        `/products?limit=${pagesize}&skip=${currentpage * pagesize}`
+      );
       return res.data;
     } catch (error) {
       console.log(error);
@@ -26,7 +28,11 @@ const NewPage = () => {
     }
   }
   if (isLoading) {
-    return <h1>Loading....</h1>;
+    return (
+      <div className="loading">
+        <span className="loader"></span>
+      </div>
+    );
   }
   if (error) {
     return <h1>Error: {error.message}</h1>;
@@ -35,7 +41,11 @@ const NewPage = () => {
     <>
       <div className="cards">
         {products?.products.map((res) => (
-          <li className="card" onClick={() => navigate(`/profille/${res.id}`)} key={res.id}>
+          <li
+            className="card"
+            onClick={() => navigate(`/profille/${res.id}`)}
+            key={res.id}
+          >
             <img src={res.thumbnail} alt="" />
             <b>{res.title}</b>
           </li>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useStateValue } from "../context";
 import { useNavigate } from "react-router-dom";
-
+import like from "../images/heart.svg";
 const NewsPage = () => {
   const navigate = useNavigate();
   const { wishlist, setwishlist } = useStateValue();
@@ -26,14 +26,16 @@ const NewsPage = () => {
             <b>{product.title}</b>
             <p>Price: {product.price}</p>
             <p>Brand: {product.brand}</p>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handlwishlist(product);
-              }}
-            >
-              Like
-            </button>
+            <div className="like">
+              <img
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlwishlist(product);
+                }}
+                src={like}
+                alt=""
+              />
+            </div>
           </li>
         ))}
       </ul>

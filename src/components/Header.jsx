@@ -30,8 +30,8 @@ const Header = () => {
         <nav>
           <NavLink to="/homepage">HomePage</NavLink>
           {isauth && <NavLink to="/profile">Profile</NavLink>}
-          <NavLink to="/newspage">Newspage {wishlist.length}</NavLink>
-          {!isauth && <NavLink to="/login">Login</NavLink>}
+          <NavLink to="/newspage">NewsPage {wishlist.length}</NavLink>
+          {!isauth && <NavLink to="/LoginPage">Login</NavLink>}
           <NavLink to="/newpage">NewPage</NavLink>
         </nav>
       </div>
